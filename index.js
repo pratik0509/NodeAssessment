@@ -8,6 +8,7 @@ const config = require('./config.js');
 var Stock = require('./models/stock.js');
 const domain = 'http://www.quandl.com/api/v3/datasets/XNSE/';
 const endURI = '.json?api_key=gWf2CLShwrGUBVnqzsT4';
+
 requestSettings = {
     url: 'http://www.quandl.com/api/v3/datasets/XNSE/TCS.json?api_key=gWf2CLShwrGUBVnqzsT4',
     proxy: config.proxy
@@ -31,7 +32,6 @@ io.on('connection', function(client) {
             let flag = true;
             console.log(count);
             if (ticker.length == 0) {
-                console.log('mmmmm');
                 client.emit('fetched', JSON.stringify([]));
             }
             ticker.forEach(function(elem) {
